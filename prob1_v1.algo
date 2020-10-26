@@ -1,0 +1,36 @@
+ALGORITHM sum_distinct_v1
+VAR
+   tab1,tab2 : ARRAY_OF INTEGER[]; 
+   i,j,s1,s2,count,sum : INTEGER; 
+
+BEGIN
+    s1:=0;
+    s2:=0;
+    count :=0;
+    FOR i FROM 0 TO tab1.length-1 STEP 1  DO   
+      FOR j FROM 0 to tab2.length-1 STEP 1 DO
+        IF (tab1[i] <> tab2[j] ) THEN
+        count := count+1;  
+        END_IF
+        IF (count == tab2.length ) THEN
+        s1:= s1+ tab1[i];  
+        END_IF
+      END_FOR
+      count :=0;
+    END_FOR
+    
+    FOR i FROM 0 TO tab2.length-1 STEP 1  DO   
+      FOR j FROM 0 to tab1.length-1 STEP 1 DO
+        IF (tab2[i] <> tab1[j] ) THEN
+        count :=count +1;
+        END_IF
+        IF (count = tab1.length) THEN
+          s2 := s2 + tab2[i]; 
+        END_IF
+      END_FOR
+      count:=0;
+    END_FOR
+   
+    sum := s1+s2;   
+   
+END

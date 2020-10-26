@@ -1,0 +1,55 @@
+ALGORITHM sum_overlapping_v2
+VAR
+   htab : HASH_TABLE<INTEGER,INTEGER>;
+   tab1,tab2,set : ARRAY_OF INTEGER[]; 
+   i,j,count : INTEGER;
+   
+BEGIN
+   Read(tab1);
+   Read(tab2);
+
+   FOR i FROM 0 TO tab1.length -1 STEP 1  DO
+       IF (htab.lookup(tab1[i]) = TRUE) THEN
+           count := htab.get(tab1[i]);
+           htab.insert(tab1[i],count+1);
+       ELSE
+           htab.insert(tab1[i],1);
+       END_IF
+   END_FOR
+
+   FOR i FROM 0 TO tab2.length -1 STEP 1  DO
+       IF (htab.lookup(tab2[i]) = TRUE) THEN
+           count := htab.get(tab2[i]);
+           htab.insert(tab2[i],count+1);
+       ELSE
+           htab.insert(tab2[i],1);
+       END_IF
+   END_FOR
+
+   sum := 0;
+   set := htab.getKeys();
+   vals := htab.getValues();
+              
+    FOR i FROM O TO set.length -1 STEP 1 DO
+            
+       IF (vals[i] == 2) THEN
+          sum += key[i];
+       END_IF
+    END_FOR
+   
+             
+        
+            
+            if(htab.get(key)==1)
+                sum += key;
+        }
+   
+
+
+
+
+
+
+
+
+END
